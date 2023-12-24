@@ -19,7 +19,7 @@
           <tr v-for="country in countries" :key="country.id">
             <td>{{ country.id }}</td>
             <td>{{ country.name }}</td>
-            <td>{{ country.languages }}</td>
+            <td>{{ country.language }}</td>
             <td>{{ country.capital }}</td>
             <td>{{ country.currency }}</td>
             <td>{{ country.population }}</td>
@@ -31,37 +31,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
-      countries: [
-        {
-          id: 1,
-          name: "中華民國",
-          languages: "中文",
-          capital: "臺北市",
-          currency: "新台幣",
-          population: 23000000,
-        },
-        {
-          id: 2,
-          name: "日本",
-          languages: "日語",
-          capital: "東京",
-          currency: "日圓",
-          population: 125000000,
-        },
-        {
-          id: 3,
-          name: "美國",
-          languages: "英語",
-          capital: "華盛頓特區",
-          currency: "美元",
-          population: 330000000,
-        },
-      ],
+      countries: [],
+      loading: false,
     };
+  },
+  mounted() {
+    this.fetchCountries();
+  },
+  methods: {
+    async fetchCountries() {
+      this.loading = true;
+      try {
+        const response = await axios.get('https://localhost:7252/Country');
+        this.countries = response.data;
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 };
 </script>

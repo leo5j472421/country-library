@@ -24,7 +24,8 @@ public class CountryController : ControllerBase
                 Name = "India",
                 Language = "Hindi",
                 Currency = "INR",
-                Population = 1380004385
+                Population = 1380004385,
+                Capital = "New Delhi"
             }
         };
     }
@@ -36,5 +37,6 @@ public class CountryDto
     public string Name { get; set; }
     public string Language { get; set; }
     public string Currency { get; set; }
+    public string Capital { get; set; }
     public int Population { get; set; }
 }
