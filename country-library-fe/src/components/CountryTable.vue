@@ -13,6 +13,7 @@
             <th>首都</th>
             <th>貨幣</th>
             <th>人口</th>
+            <th>編輯</th>
           </tr>
         </thead>
         <tbody>
@@ -23,22 +24,32 @@
             <td>{{ country.capital }}</td>
             <td>{{ country.currency }}</td>
             <td>{{ country.population }}</td>
+            <td>
+            </td>
           </tr>
         </tbody>
       </table>
+
     </main>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
+import { ref } from "vue";
+import Country from '../model/Country';
+
 
 export default {
   name: 'App',
   data() {
     return {
-      countries: [],
+      // countries: Array<Country> [],
+      countries: [] as Array<Country>,
       loading: false,
+      editDialogVisible: false, // 添加這一行
+      editCountry: null, // 添加這一行
+      visible: false
     };
   },
   mounted() {
@@ -84,5 +95,4 @@ th,
 td {
   border: 1px solid #ccc;
   padding: 10px;
-}
-</style>
+}</style>
