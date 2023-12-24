@@ -5,4 +5,5 @@ export default interface Country {
 	capital: string;
 	currency: string;
 	population: number;
-      }
+	editing: boolean;
+}
