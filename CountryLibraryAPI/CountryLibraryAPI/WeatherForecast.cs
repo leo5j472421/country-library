@@ -1,4 +1,4 @@
-namespace CounrtyLibraryAPI;
+namespace CountryLibraryAPI;
 
 public class WeatherForecast
 {
