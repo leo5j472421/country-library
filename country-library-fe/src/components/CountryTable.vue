@@ -48,7 +48,7 @@ export default {
     async fetchCountries() {
       this.loading = true;
       try {
-        const response = await axios.get('https://localhost:7252/Country');
+        const response = await axios.get('https://localhost:7252/Country/GetCountries');
         this.countries = response.data;
       } catch (error) {
         console.error('Error fetching countries:', error);

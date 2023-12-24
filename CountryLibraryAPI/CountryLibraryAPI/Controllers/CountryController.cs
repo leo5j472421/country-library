@@ -1,3 +1,4 @@
+using CountryLibraryAPI.Model;
 using CountryLibraryAPI.Repository;
 using CountryLibraryAPI.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -17,19 +18,31 @@ public class CountryController : ControllerBase
         _countryService = countryService;
     }
 
-    [HttpGet(Name = "GetCountries")]
+    [HttpGet]
+    [Route("GetCountries")]
     public async Task<IEnumerable<CountryDto>> Get()
     {
         return await _countryService.GetCountriesAsync();
     }
-}
 
-public class CountryDto
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Language { get; set; }
-    public string Currency { get; set; }
-    public string Capital { get; set; }
-    public int Population { get; set; }
+    [Route("AddCountry")]
+    [HttpPost]
+    public async Task Add(CountryDto country)
+    {
+        await _countryService.Add(country);
+    }
+
+    [Route("UpdateCountry")]
+    [HttpPost]
+    public async Task Update(CountryDto country)
+    {
+        await _countryService.Update(country);
+    }
+
+    [Route("DeleteCountry/{id}")]
+    [HttpPost]
+    public async Task Delete(int id)
+    {
+        await _countryService.Delete(id);
+    }
 }
