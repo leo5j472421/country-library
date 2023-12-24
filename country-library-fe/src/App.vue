@@ -1,16 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <CountryTable/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import CountryTable from './components/CountryTable.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    CountryTable: CountryTable
   }
 });
 </script>
