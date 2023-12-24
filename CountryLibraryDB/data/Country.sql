@@ -1,7 +1,7 @@
 -- Write your own SQL object definition here, and it'll be included in your package.
 -- Write your own SQL object definition here, and it'll be included in your package.
 TRUNCATE TABLE Country
-INSERT INTO Country (Name, Languages, Capital, Currency, Population) 
+INSERT INTO Country (Name, Language, Capital, Currency, Population) 
 VALUES ('Taiwan', 'Chinese', 'Taipei', 'TWD', 23000000),
 ('Cambodia','Khmer','PP','KHR',7000000)
 

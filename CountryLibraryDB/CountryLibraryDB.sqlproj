@@ -11,12 +11,13 @@
     <Folder Include="data" />
     <Folder Include="dbo" />
     <Folder Include="dbo\table" />
+    <Folder Include="dbo\table\store procedure" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
   </ItemGroup>
-   <ItemGroup>
-    <None Include="data\Country.sql" />
+  <ItemGroup>
+    <None Include="data/Country.sql" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />

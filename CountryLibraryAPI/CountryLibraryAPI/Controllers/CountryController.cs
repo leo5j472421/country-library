@@ -1,3 +1,5 @@
+using CountryLibraryAPI.Repository;
+using CountryLibraryAPI.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountryLibraryAPI.Controllers;
@@ -7,27 +9,18 @@ namespace CountryLibraryAPI.Controllers;
 public class CountryController : ControllerBase
 {
     private readonly ILogger<CountryController> _logger;
+    private readonly CountryService _countryService;
 
-    public CountryController(ILogger<CountryController> logger)
+    public CountryController(ILogger<CountryController> logger, CountryService countryService)
     {
         _logger = logger;
+        _countryService = countryService;
     }
 
     [HttpGet(Name = "GetCountries")]
-    public IEnumerable<CountryDto> Get()
+    public async Task<IEnumerable<CountryDto>> Get()
     {
-        return new List<CountryDto>()
-        {
-            new CountryDto()
-            {
-                Id = 1,
-                Name = "India",
-                Language = "Hindi",
-                Currency = "INR",
-                Population = 1380004385,
-                Capital = "New Delhi"
-            }
-        };
+        return await _countryService.GetCountriesAsync();
     }
 }
 
